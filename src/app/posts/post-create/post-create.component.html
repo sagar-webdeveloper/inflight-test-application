@@ -1,0 +1,90 @@
+<div class="container">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form [formGroup]="form" (submit)="onSavePost()">
+        <div class="row text-center p-4 my-3 card-design bg-white">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <mat-form-field>
+                        <input matInput type="text" formControlName="source" placeholder="Source">
+                        <mat-error *ngIf="form.get('source').invalid">Source </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field>
+                        <input matInput type="text" formControlName="destination" placeholder="Destination">
+                        <mat-error *ngIf="form.get('destination').invalid">Destination</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field>
+                        <input matInput type="text" formControlName="flightProvider" placeholder="Flight Provider">
+                        <mat-error *ngIf="form.get('flightProvider').invalid">Flight Provider</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field>
+                        <mat-label>Select Flight Status</mat-label>
+                        <mat-select formControlName="status">
+                            <mat-option *ngFor="let status of flightStatus" [value]="status">
+                                {{status}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="form.get('status').invalid">Please select Flight Status</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field>
+                        <input matInput type="text" formControlName="flightCode" placeholder="Flight Code">
+                        <mat-error *ngIf="form.get('flightCode').invalid">Flight Code</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <mat-form-field>
+                        <input matInput type="text" formControlName="sourceCode" placeholder="Souce Code">
+                        <mat-error *ngIf="form.get('sourceCode').invalid">Source Code</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field>
+                        <input matInput type="text" formControlName="destinationCode" placeholder="Destination Code">
+                        <mat-error *ngIf="form.get('destinationCode').invalid">Destination Code</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field>
+                        <input matInput formControlName="arrivalDate" [matDatepicker]="picker" placeholder="Arrival Date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field>
+                        <input matInput formControlName="departureDate" [matDatepicker]="pickerTo" placeholder="Departure Date">
+                        <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerTo></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field>
+                        <input matInput type="text" formControlName="arrivalTime" placeholder="Arrival Time">
+                        <mat-error *ngIf="form.get('arrivalTime').invalid">Arrival Time</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="text-center" *ngIf="!delete">
+                    <button mat-raised-button type="submit" style="background-color:#4267b2;color:white">Save Post</button>
+                </div>
+                <div class="text-center" *ngIf="delete">
+                    <span><button mat-raised-button [routerLink]="['/']"  style="background-color:green;color:white">Back</button></span>
+                    <span class="mar-l-15"><button mat-raised-button (click)="onDelete()" style="background-color:red;color:white">Delete</button></span>
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

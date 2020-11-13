@@ -1,0 +1,27 @@
+<div class="container">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <section class="my-col" *ngIf="posts.length > 0 && !isLoading">
+        <table class="list-table">
+            <tr *ngFor="let option of posts" class="list-tr">
+                <td>
+                    <span [ngClass]="{'text-linethrough' : option.status=='DELAYED'}">{{option.arrivalTime}}</span>
+                    <span *ngIf="option.status=='DELAYED'" class="mar-l-10">17:55</span></td>
+                <td>{{option.destination}}
+                    <p class="font-12">{{option.flightCode +" "+ option.flightProvider}}</p>
+
+                </td>
+                <td>
+                    <p [ngClass]="option.status=='DELAYED'? 'bg-yellow': 'bg-green'" class="status">{{option.status}}</p>
+                </td>
+                <td class="terminal">Terminal1</td>
+                <td><a mat-button class="col-green" [routerLink]="['/edit', option.id]">More Details <i class="fa fa-arrow-right" aria-hidden="true"></i></a></td>
+            </tr>
+        </table>
+    </section>
+
+
+    <section class="my-col">
+    </section>
+</div>
+
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No posts added yet!</p>

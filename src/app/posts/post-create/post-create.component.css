@@ -1,0 +1,34 @@
+mat-form-field,
+textarea {
+    width: 100%;
+}
+
+mat-spinner {
+    margin: auto;
+}
+
+input[type="file"] {
+    visibility: hidden;
+}
+
+.image-preview {
+    height: 5rem;
+    margin: 1rem 0;
+}
+
+.image-preview img {
+    height: 100%;
+}
+
+.card-design {
+    border: 1px solid #dddfe2;
+    border-radius: 3px;
+}
+
+.bg-white {
+    background: white;
+}
+
+.mar-l-15 {
+    margin-left: 15px;
+}
